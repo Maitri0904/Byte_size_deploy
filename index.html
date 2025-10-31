@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bytesize Courses - Master Skills That Matter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="relative">
+                            <svg width="40" height="40" viewBox="0 0 40 40" class="drop-shadow-lg">
+                                <defs>
+                                    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#000080"/>
+                                        <stop offset="30%" style="stop-color:#000080"/>
+                                        <stop offset="70%" style="stop-color:#000080"/>
+                                        <stop offset="100%" style="stop-color:#000080"/>
+                                    </linearGradient>
+                                </defs>
+                                <!-- Circuit board background -->
+                                <rect width="40" height="40" rx="8" fill="url(#logoGradient)"/>
+                                <!-- Brain/AI symbol -->
+                                <path d="M12 15c0-2 1.5-3.5 3.5-3.5S19 13 19 15c1 0 2 .5 2.5 1.5.5-1 1.5-1.5 2.5-1.5 2 0 3.5 1.5 3.5 3.5s-1.5 3.5-3.5 3.5c0 1-.5 2-1.5 2.5 1 .5 1.5 1.5 1.5 2.5 0 2-1.5 3.5-3.5 3.5s-3.5-1.5-3.5-3.5c-1 0-2-.5-2.5-1.5-.5 1-1.5 1.5-2.5 1.5-2 0-3.5-1.5-3.5-3.5s1.5-3.5 3.5-3.5c0-1 .5-2 1.5-2.5-1-.5-1.5-1.5-1.5-2.5z" fill="white" opacity="0.9"/>
+                                <!-- Circuit lines -->
+                                <path d="M8 20h4m8 0h4m-12-4v4m8-4v4" stroke="white" stroke-width="1" opacity="0.7"/>
+                                <!-- Graduation cap -->
+                                <path d="M20 12l8 3-8 3-8-3z" fill="white" opacity="0.8"/>
+                                <path d="M28 15v4l-8 3-8-3v-4" fill="none" stroke="white" stroke-width="1" opacity="0.7"/>
+                            </svg>
+                        </div>
+                        <h1 class="text-2xl font-bold" style="color: #000080;">Bytesize Courses</h1>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#" onclick="showPage('landing')" class="text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition duration-200" id="landing-nav">Home</a>
+                        <a href="#" onclick="showPage('courses')" class="text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition duration-200" id="courses-nav" style="display: none;">Courses</a>
+                        <a href="#" onclick="showPage('plans')" class="text-gray-700 hover:text-purple-600 px-3 py-2 rounded-md text-sm font-medium transition duration-200" id="plans-nav" style="display: none;">Plans</a>
+                        <button onclick="openAskAI()" class="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-purple-600 hover:to-blue-600 transition duration-200 flex items-center" id="ask-ai-nav" style="display: none;">
+                            <span class="mr-2">🤖</span>Ask AI
+                        </button>
+                        <span id="user-welcome" class="text-gray-600 px-3 py-2 text-sm" style="display: none;"></span>
+                        <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-600 transition duration-200" id="logout-btn" style="display: none;">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <div id="landing-page" class="min-h-screen pt-16">
+        <!-- Hero Section -->
+        <div class="bg-navy-900 text-white py-20 relative overflow-hidden">
+            <!-- Clean Background -->
+            <div class="absolute inset-0 overflow-hidden">
+                <!-- Subtle gradient overlay -->
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-navy-900 to-indigo-900"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Left Side - Content -->
+                    <div class="space-y-8">
+                        <div>
+                            <h1 class="text-6xl font-bold mb-6">Master AI & Digital Skills</h1>
+                            <p class="text-xl mb-8 opacity-90">Learn practical AI tools and digital skills in bite-sized courses. Transform your productivity with expert-crafted lessons designed for busy professionals.</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-blue-300">✓</span>
+                                <span class="opacity-90">Practical skills you can use immediately</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-blue-300">✓</span>
+                                <span class="opacity-90">Bite-sized lessons that fit your schedule</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-blue-300">✓</span>
+                                <span class="opacity-90">Expert content with real examples</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side - Auth Forms -->
+                    <div class="bg-white rounded-2xl shadow-2xl p-8">
+                        <div class="text-center mb-8">
+                            <h2 class="text-3xl font-bold text-gray-900 mb-2">Join Bytesize Courses</h2>
+                            <p class="text-gray-600">Start your learning journey today</p>
+                        </div>
+                        
+                        <!-- Toggle between Sign Up and Login -->
+                        <div class="flex mb-6 bg-gray-100 rounded-lg p-1">
+                            <button id="signup-tab" onclick="switchTab('signup')" class="flex-1 py-2 px-4 rounded-md text-sm font-medium transition duration-200 bg-white text-purple-600 shadow-sm">
+                                Sign Up
+                            </button>
+                            <button id="login-tab" onclick="switchTab('login')" class="flex-1 py-2 px-4 rounded-md text-sm font-medium transition duration-200 text-gray-600 hover:text-gray-900">
+                                Login
+                            </button>
+                        </div>
+
+                        <!-- Sign Up Form -->
+                        <form id="signup-form" class="space-y-6" onsubmit="handleSignup(event)">
+                            <div>
+                                <label for="fullname" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input id="fullname" name="fullname" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 text-gray-900 bg-white input-field" placeholder="Enter your full name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input id="email" name="email" type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 text-gray-900 bg-white input-field" placeholder="Enter your email">
+                            </div>
+                            <div>
+                                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                                <input id="password" name="password" type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 text-gray-900 bg-white input-field" placeholder="Create a password">
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-4 rounded-lg font-semibold text-lg hover:from-purple-700 hover:to-blue-700 transition duration-200 transform hover:scale-105 flex items-center justify-center">
+                                <span id="signup-btn-text">Create Account</span>
+                                <div id="signup-loading" class="loading ml-2" style="display: none;"></div>
+                            </button>
+                        </form>
+
+                        <!-- Login Form -->
+                        <form id="login-form" class="space-y-6 hidden" onsubmit="handleLogin(event)">
+                            <div>
+                                <label for="login-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input id="login-email" name="email" type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 text-gray-900 bg-white input-field" placeholder="Enter your email">
+                            </div>
+                            <div>
+                                <label for="login-password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                                <input id="login-password" name="password" type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition duration-200 text-gray-900 bg-white input-field" placeholder="Enter your password">
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white py-3 px-4 rounded-lg font-semibold text-lg hover:from-green-700 hover:to-blue-700 transition duration-200 transform hover:scale-105 flex items-center justify-center">
+                                <span id="login-btn-text">Sign In</span>
+                                <div id="login-loading" class="loading ml-2" style="display: none;"></div>
+                            </button>
+                        </form>
+
+                        <!-- Demo Credentials -->
+                        <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <p class="text-sm text-blue-800 font-medium mb-2">🎯 Demo Credentials:</p>
+                            <p class="text-xs text-blue-700">Email: demo@bytesizecourses.com</p>
+                            <p class="text-xs text-blue-700">Password: demo123</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Free Preview Section -->
+        <div class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Free Preview Videos</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto text-lg">Get a taste of our courses with these free 10-15 minute preview videos</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-pink-500 to-purple-600 h-40 flex items-center justify-center">
+                            <span class="text-5xl">🎨</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2">Canva AI Basics</h4>
+                            <p class="text-gray-600 text-sm mb-4">Learn essential Canva AI features for instant design creation</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">Free • 12 min</span>
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <button onclick="playFreeVideo('canva')" class="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 px-4 rounded-lg hover:from-pink-600 hover:to-purple-700 transition duration-200 font-medium">
+                                Watch Free
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-blue-500 to-cyan-600 h-40 flex items-center justify-center">
+                            <span class="text-5xl">🤖</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2">ChatGPT Mastery</h4>
+                            <p class="text-gray-600 text-sm mb-4">Getting started with AI assistance and prompt engineering</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">Free • 15 min</span>
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <button onclick="playFreeVideo('chatgpt')" class="w-full bg-gradient-to-r from-blue-500 to-cyan-600 text-white py-3 px-4 rounded-lg hover:from-blue-600 hover:to-cyan-700 transition duration-200 font-medium">
+                                Watch Free
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-green-500 to-emerald-600 h-40 flex items-center justify-center">
+                            <span class="text-5xl">📈</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2">Digital Marketing</h4>
+                            <p class="text-gray-600 text-sm mb-4">Marketing fundamentals and growth strategies overview</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">Free • 14 min</span>
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <button onclick="playFreeVideo('marketing')" class="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 px-4 rounded-lg hover:from-green-600 hover:to-emerald-700 transition duration-200 font-medium">
+                                Watch Free
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-orange-500 to-red-600 h-40 flex items-center justify-center">
+                            <span class="text-5xl">📊</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2">Excel Mastery</h4>
+                            <p class="text-gray-600 text-sm mb-4">Essential Excel functions, formulas and data analysis</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">Free • 13 min</span>
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <button onclick="playFreeVideo('excel')" class="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 px-4 rounded-lg hover:from-orange-600 hover:to-red-700 transition duration-200 font-medium">
+                                Watch Free
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100">
+                        <div class="bg-gradient-to-br from-yellow-500 to-orange-600 h-40 flex items-center justify-center">
+                            <span class="text-5xl">🐍</span>
+                        </div>
+                        <div class="p-6">
+                            <h4 class="font-bold text-lg mb-2">Python Programming</h4>
+                            <p class="text-gray-600 text-sm mb-4">Your first Python program and coding fundamentals</p>
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-medium">Free • 10 min</span>
+                                <span class="text-yellow-500">⭐⭐⭐⭐⭐</span>
+                            </div>
+                            <button onclick="playFreeVideo('python')" class="w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white py-3 px-4 rounded-lg hover:from-yellow-600 hover:to-orange-700 transition duration-200 font-medium">
+                                Watch Free
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Overview Section -->
+        <div class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Professional Courses</h2>
+                    <p class="text-gray-600 max-w-3xl mx-auto text-lg">Master AI tools and digital skills with our comprehensive, industry-focused courses</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <div class="text-4xl mb-4">🤖</div>
+                        <h3 class="text-xl font-bold mb-3">AI for Beginners</h3>
+                        <p class="text-gray-600 mb-4">Learn to use AI tools to save 1–2 hours daily with practical applications.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">5 Modules</span>
+                            <span class="text-gray-500 text-sm">2 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <div class="text-4xl mb-4">💬</div>
+                        <h3 class="text-xl font-bold mb-3">Prompt Engineering</h3>
+                        <p class="text-gray-600 mb-4">Learn how to talk to AI to get the BEST outputs with advanced techniques.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">4 Modules</span>
+                            <span class="text-gray-500 text-sm">2 hours</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 card-hover">
+                        <div class="text-4xl mb-4">🎓</div>
+                        <h3 class="text-xl font-bold mb-3">AI for Students</h3>
+                        <p class="text-gray-600 mb-4">Productivity boost using AI without coding - perfect for academic success.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">4 Modules</span>
+                            <span class="text-gray-500 text-sm">1.8 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16">
+                    <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-8 max-w-4xl mx-auto">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Ready to Start Learning?</h3>
+                        <p class="text-gray-600 mb-6 text-lg">Join thousands of professionals who are already transforming their careers with AI skills</p>
+                        <button onclick="document.getElementById('signup-form').scrollIntoView()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-4 rounded-lg font-semibold text-lg hover:from-purple-700 hover:to-blue-700 transition duration-200 transform hover:scale-105">
+                            Get Started Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses Page -->
+    <div id="courses-page" class="hidden min-h-screen pt-16 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Professional AI Courses</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-xl">Master cutting-edge AI tools and digital skills with our comprehensive, industry-focused courses</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+                <!-- AI for Beginners Course -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-100">
+                    <div class="bg-gradient-to-br from-blue-500 to-cyan-600 h-56 flex items-center justify-center relative">
+                        <span class="text-7xl">🤖</span>
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span class="text-white text-sm font-medium">Beginner</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">AI for Beginners – Daily Life Edition</h3>
+                        <p class="text-gray-600 mb-6">Learn to use AI tools to save 1–2 hours daily with practical applications for everyday productivity.</p>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">5 Modules</span>
+                            <span class="text-gray-500 text-sm">2 hours total</span>
+                        </div>
+                        <div class="space-y-3 mb-6">
+                            <button onclick="showCourseDetails('ai-beginners')" class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-3 px-4 rounded-lg hover:from-blue-700 hover:to-cyan-700 transition duration-200 font-medium">
+                                View Course Details
+                            </button>
+                            <button onclick="startCoursePreview('ai-beginners')" class="w-full border-2 border-blue-600 text-blue-600 py-3 px-4 rounded-lg hover:bg-blue-50 transition duration-200 font-medium">
+                                Start Free Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt Engineering Course -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-100">
+                    <div class="bg-gradient-to-br from-purple-500 to-indigo-600 h-56 flex items-center justify-center relative">
+                        <span class="text-7xl">💬</span>
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span class="text-white text-sm font-medium">Expert</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">Prompt Engineering Bootcamp</h3>
+                        <p class="text-gray-600 mb-6">Learn how to talk to AI to get the BEST outputs with advanced prompting techniques and strategies.</p>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">4 Modules</span>
+                            <span class="text-gray-500 text-sm">2 hours total</span>
+                        </div>
+                        <div class="space-y-3 mb-6">
+                            <button onclick="showCourseDetails('prompt-engineering')" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition duration-200 font-medium">
+                                View Course Details
+                            </button>
+                            <button onclick="startCoursePreview('prompt-engineering')" class="w-full border-2 border-purple-600 text-purple-600 py-3 px-4 rounded-lg hover:bg-purple-50 transition duration-200 font-medium">
+                                Start Free Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI for Students Course -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-100">
+                    <div class="bg-gradient-to-br from-orange-500 to-red-600 h-56 flex items-center justify-center relative">
+                        <span class="text-7xl">🎓</span>
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-20 backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span class="text-white text-sm font-medium">Student</span>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">AI for Students</h3>
+                        <p class="text-gray-600 mb-6">Productivity boost using AI without coding - perfect for academic success and learning enhancement.</p>
+                        <div class="flex justify-between items-center mb-6">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">4 Modules</span>
+                            <span class="text-gray-500 text-sm">1.8 hours total</span>
+                        </div>
+                        <div class="space-y-3 mb-6">
+                            <button onclick="showCourseDetails('ai-students')" class="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-3 px-4 rounded-lg hover:from-orange-700 hover:to-red-700 transition duration-200 font-medium">
+                                View Course Details
+                            </button>
+                            <button onclick="startCoursePreview('ai-students')" class="w-full border-2 border-orange-600 text-orange-600 py-3 px-4 rounded-lg hover:bg-orange-50 transition duration-200 font-medium">
+                                Start Free Preview
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Plans Page -->
+    <div id="plans-page" class="hidden min-h-screen pt-16 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Choose Your Learning Plan</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-xl">Select the plan that accelerates your career growth</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-2xl shadow-xl p-10 border-2 border-gray-200 relative">
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold mb-4">Basic Plan</h3>
+                        <div class="mb-8">
+                            <span class="rupee-symbol text-5xl font-bold">₹150</span>
+                            <span class="text-gray-600 text-lg">/month</span>
+                        </div>
+                        <ul class="text-left space-y-4 mb-10">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Access to 3 courses of your choice</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">All free preview videos</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Video lessons and materials</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Basic progress tracking</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Mobile and desktop access</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Email support</span>
+                            </li>
+                        </ul>
+                        <button onclick="selectPlan('basic')" class="w-full bg-gray-600 text-white py-4 px-6 rounded-lg hover:bg-gray-700 transition duration-200 font-semibold text-lg flex items-center justify-center">
+                            <span id="basic-btn-text">Choose Basic Plan</span>
+                            <div id="basic-loading" class="loading ml-2" style="display: none;"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-white rounded-2xl shadow-xl p-10 border-2 border-purple-500 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="premium-badge text-white px-6 py-2 rounded-full text-sm font-bold">MOST POPULAR</span>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-3xl font-bold mb-4">Premium Plan</h3>
+                        <div class="mb-8">
+                            <span class="rupee-symbol text-5xl font-bold">₹299</span>
+                            <span class="text-gray-600 text-lg">/month</span>
+                        </div>
+                        <ul class="text-left space-y-4 mb-10">
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700"><strong>Access to ALL courses</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">All free preview videos</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Video lessons and downloadable materials</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Advanced progress tracking & analytics</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Priority support & live Q&A sessions</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-purple-500 mr-3 text-xl">🤖</span>
+                                <span class="text-gray-700"><strong>Ask AI Chatbot for instant doubt resolution</strong></span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Certificate of completion</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 text-xl">✓</span>
+                                <span class="text-gray-700">Early access to new courses</span>
+                            </li>
+                        </ul>
+                        <button onclick="selectPlan('premium')" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 px-6 rounded-lg hover:from-purple-700 hover:to-blue-700 transition duration-200 font-semibold text-lg transform hover:scale-105 flex items-center justify-center">
+                            <span id="premium-btn-text">Choose Premium Plan</span>
+                            <div id="premium-loading" class="loading ml-2" style="display: none;"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Details Modal -->
+    <div id="course-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 overflow-y-auto">
+        <div class="bg-white rounded-2xl p-8 max-w-5xl w-full mx-4 my-8 max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center mb-8">
+                <h3 id="course-title" class="text-3xl font-bold"></h3>
+                <button onclick="closeCourseDetails()" class="text-gray-500 hover:text-gray-700 text-3xl font-bold">&times;</button>
+            </div>
+            <div id="course-content" class="space-y-8">
+                <!-- Course content will be populated by JavaScript -->
+            </div>
+            <div class="text-center mt-10">
+                <button onclick="enrollNow()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-4 rounded-lg hover:from-purple-700 hover:to-blue-700 transition duration-200 text-lg font-semibold transform hover:scale-105">
+                    Enroll Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Preview Modal -->
+    <div id="course-preview-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 overflow-y-auto">
+        <div class="bg-white rounded-2xl p-8 max-w-4xl w-full mx-4 my-8 max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="preview-title" class="text-2xl font-bold"></h3>
+                <button onclick="closeCoursePreview()" class="text-gray-500 hover:text-gray-700 text-3xl font-bold">&times;</button>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="mb-6">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm font-medium text-gray-700">Course Progress</span>
+                    <span id="progress-text" class="text-sm font-medium text-gray-700">15 min watched / 2 hours total</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="progress-bar h-2 rounded-full" style="width: 12.5%"></div>
+                </div>
+            </div>
+
+            <!-- Video Preview Area -->
+            <div class="course-preview rounded-xl h-64 flex items-center justify-center mb-6 border-2 border-dashed border-gray-300">
+                <div class="text-center">
+                    <span class="text-6xl mb-4 block">🎬</span>
+                    <p class="text-gray-600 text-lg font-medium">Free 15-Minute Preview</p>
+                    <p class="text-sm text-gray-500 mt-2">Sample content from the full course</p>
+                </div>
+            </div>
+
+            <!-- Upgrade Notice -->
+            <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-6 border border-purple-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-900 mb-2">🔒 Want to continue learning?</h4>
+                        <p class="text-gray-600">You've watched the free 15-minute preview. Upgrade to access the complete course with advanced modules, exercises, and certificates.</p>
+                    </div>
+                    <div class="ml-6">
+                        <button onclick="upgradeFromPreview()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transition duration-200 font-semibold whitespace-nowrap">
+                            Upgrade Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Free Video Modal -->
+    <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-3xl w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="video-title" class="text-2xl font-bold"></h3>
+                <button onclick="closeVideo()" class="text-gray-500 hover:text-gray-700 text-3xl font-bold">&times;</button>
+            </div>
+            <div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl h-80 flex items-center justify-center mb-6">
+                <div class="text-center">
+                    <span class="text-8xl mb-4 block">🎬</span>
+                    <p class="text-gray-600 text-xl font-medium">Free Preview Video</p>
+                    <p id="video-duration" class="text-sm text-gray-500 mt-2"></p>
+                </div>
+            </div>
+            <div class="text-center">
+                <p class="text-gray-600 mb-6 text-lg">This is a sample preview. Upgrade to access full courses with advanced content!</p>
+                <button onclick="showPage('plans')" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transition duration-200 font-semibold">
+                    Upgrade Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ask AI Modal -->
+    <div id="ask-ai-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-2xl w-full mx-4 max-h-screen overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center space-x-3">
+                    <span class="text-3xl">🤖</span>
+                    <h3 class="text-2xl font-bold">Ask AI - Instant Doubt Resolution</h3>
+                </div>
+                <button onclick="closeAskAI()" class="text-gray-500 hover:text-gray-700 text-3xl font-bold">&times;</button>
+            </div>
+            
+            <!-- Chat Messages Area -->
+            <div id="ask-ai-messages" class="h-96 overflow-y-auto p-4 bg-gray-50 rounded-xl mb-6 space-y-4">
+                <div class="bg-blue-100 p-4 rounded-xl border-l-4 border-blue-500">
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-3">🤖</span>
+                        <div>
+                            <p class="text-sm text-blue-800 font-medium mb-2">AI Learning Assistant</p>
+                            <p class="text-sm text-blue-700">
+                                Hi! I'm your AI learning assistant. I can help you with:
+                                <br>• Course concepts and explanations
+                                <br>• Assignment guidance and tips
+                                <br>• Technical doubts about AI tools
+                                <br>• Study strategies and learning paths
+                                <br><br>What would you like to learn about today?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="space-y-4">
+                <div class="flex space-x-3">
+                    <input id="ask-ai-input" type="text" placeholder="Ask your question about courses, concepts, or assignments..." class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 bg-white input-field" onkeypress="handleAskAIKeypress(event)">
+                    <button onclick="sendAskAIMessage()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transition duration-200 font-medium flex items-center">
+                        <span id="ask-ai-send-text">Send</span>
+                        <div id="ask-ai-loading" class="loading ml-2" style="display: none;"></div>
+                    </button>
+                </div>
+                
+                <!-- Quick Questions -->
+                <div class="bg-purple-50 p-4 rounded-xl border border-purple-200">
+                    <p class="text-sm font-medium text-purple-800 mb-3">💡 Quick Questions:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        <button onclick="askQuickQuestion('How do I get started with ChatGPT?')" class="text-left text-xs bg-white hover:bg-purple-100 text-purple-700 px-3 py-2 rounded-lg border border-purple-200 transition duration-200">
+                            How do I get started with ChatGPT?
+                        </button>
+                        <button onclick="askQuickQuestion('What are the best AI tools for beginners?')" class="text-left text-xs bg-white hover:bg-purple-100 text-purple-700 px-3 py-2 rounded-lg border border-purple-200 transition duration-200">
+                            What are the best AI tools for beginners?
+                        </button>
+                        <button onclick="askQuickQuestion('How can AI help with my studies?')" class="text-left text-xs bg-white hover:bg-purple-100 text-purple-700 px-3 py-2 rounded-lg border border-purple-200 transition duration-200">
+                            How can AI help with my studies?
+                        </button>
+                        <button onclick="askQuickQuestion('Explain prompt engineering basics')" class="text-left text-xs bg-white hover:bg-purple-100 text-purple-700 px-3 py-2 rounded-lg border border-purple-200 transition duration-200">
+                            Explain prompt engineering basics
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot (Premium Feature) -->
+    <div id="ai-chatbot" class="hidden fixed bottom-4 right-4 w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 z-50">
+        <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white p-6 rounded-t-2xl flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl">🤖</span>
+                <h4 class="font-semibold text-lg">AI Learning Assistant</h4>
+            </div>
+            <button onclick="toggleChatbot()" class="text-white hover:text-gray-200 text-xl">&times;</button>
+        </div>
+        <div id="chat-messages" class="h-80 overflow-y-auto p-6 space-y-4">
+            <div class="bg-gray-100 p-4 rounded-xl">
+                <p class="text-sm">👋 Hi! I'm your AI learning assistant. Ask me anything about the courses, concepts, or need help with assignments!</p>
+            </div>
+        </div>
+        <div class="p-6 border-t">
+            <div class="flex space-x-3">
+                <input id="chat-input" type="text" placeholder="Ask your question..." class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-gray-900 bg-white input-field" onkeypress="handleChatKeypress(event)">
+                <button onclick="sendChatMessage()" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-blue-700 transition duration-200 font-medium">
+                    Send
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <button id="chat-button" class="hidden fixed bottom-6 right-6 bg-gradient-to-r from-purple-600 to-blue-600 text-white p-4 rounded-full shadow-2xl hover:from-purple-700 hover:to-blue-700 transition duration-200 z-40 transform hover:scale-110" onclick="toggleChatbot()">
+        <span class="text-2xl">💬</span>
+    </button>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
