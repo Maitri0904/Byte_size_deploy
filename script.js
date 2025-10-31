@@ -662,4 +662,5 @@ showPage('landing');
 updateNavigation();
 
 console.log('🚀 Bytesize Courses with Supabase Backend Ready!');
+
 console.log('📧 Test signup/login to see data in your Supabase tables.');
